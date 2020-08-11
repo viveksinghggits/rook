@@ -38,5 +38,5 @@ spec:
     disable: true
   storage:
     useAllNodes: true
-    useAllDevices: true
+    useAllDevices: false
     #deviceFilter:

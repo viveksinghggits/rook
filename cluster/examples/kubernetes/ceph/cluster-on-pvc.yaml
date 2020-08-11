@@ -17,7 +17,7 @@ metadata:
 spec:
   dataDirHostPath: /var/lib/rook
   mon:
-    count: 3
+    count: 1
     allowMultiplePerNode: false
     # A volume claim template can be specified in which case new monitors (and
     # monitors created during fail over) will construct a PVC based on the
@@ -27,7 +27,7 @@ spec:
     # size appropriate for monitor data will be used.
     volumeClaimTemplate:
       spec:
-        storageClassName: gp2
+        storageClassName: do-block-storage
         resources:
           requests:
             storage: 10Gi
@@ -49,7 +49,7 @@ spec:
     storageClassDeviceSets:
     - name: set1
       # The number of OSDs to create from this device set
-      count: 3
+      count: 1
       # IMPORTANT: If volumes specified by the storageClassName are not portable across nodes
       # this needs to be set to false. For example, if using the local storage provisioner
       # this should be false.
@@ -113,7 +113,7 @@ spec:
             requests:
               storage: 10Gi
           # IMPORTANT: Change the storage class depending on your environment (e.g. local-storage, gp2)
-          storageClassName: gp2
+          storageClassName: do-block-storage
           volumeMode: Block
           accessModes:
             - ReadWriteOnce
